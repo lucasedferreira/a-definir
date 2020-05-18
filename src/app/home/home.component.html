@@ -1,0 +1,8 @@
+﻿<h1>Home</h1>
+<p>Welcome!!</p>
+<div *ngIf="isLogged">
+    Users:
+    <ul>
+        <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
+    </ul>
+</div>

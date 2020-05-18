@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
+import { AuthenticationService } from './_services';
+
+@Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
-  title = 'sla';
+    isLogged: boolean;
+
+    constructor(
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) {
+        this.isLogged = authenticationService.isLogged();
+    }
+
+    logout() {
+        this.authenticationService.logout();
+        this.login();
+    }
+
+    login() {
+        this.router.navigate(['/login']);
+    }
 }
