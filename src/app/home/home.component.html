@@ -1,8 +1,41 @@
-﻿<h1>Home</h1>
-<p>Welcome!!</p>
-<div *ngIf="isLogged">
-    Users:
-    <ul>
-        <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
-    </ul>
+﻿<div class="site-blocks-cover overlay home-image" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-md-12" data-aos="fade-up" data-aos-delay="400">
+
+                <div class="row mb-4">
+                    <div class="col-md-7">
+                        <h1>A Definir</h1>
+                        <p class="mb-5 lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+                            assumenda ea
+                            quo cupiditate facere deleniti fuga officia.</p>
+                        <div>
+                            <a href="#"
+                                class="btn btn-white btn-outline-white py-3 px-5 rounded-0 mb-lg-0 mb-2 d-block d-sm-inline-block">Products</a>
+                            <a href="#"
+                                class="btn btn-white py-3 px-5 rounded-0 d-block d-sm-inline-block ml-3">Test</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section" id="products-section">
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-md-6 text-center">
+                <h3 class="section-sub-title">Popular Products</h3>
+                <h2 class="section-title mb-3">Our Products</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nostrum natus excepturi fuga ullam accusantium vel ut eveniet aut consequatur laboriosam ipsam.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngFor="let p of products;" class="col-md-6 col-lg-3">
+                <product-cart [product]="p" [shopping-cart]="cart"></product-cart>
+            </div>
+        </div>
+    </div>
 </div>

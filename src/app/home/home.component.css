@@ -1,0 +1,182 @@
+.home-image {
+    background-image: url(../_assets/images/home_example.jpg);
+}
+
+.site-blocks-cover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-position: center center;
+}
+
+.site-blocks-cover.overlay {
+    position: relative;
+}
+
+.site-blocks-cover.overlay:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.site-blocks-cover .player {
+    position: absolute;
+    bottom: -250px;
+    width: 100%;
+}
+
+.site-blocks-cover, .site-blocks-cover>.container>.row {
+    min-height: 600px;
+    height: calc(100vh);
+}
+
+.site-blocks-cover.inner-page-cover, .site-blocks-cover.inner-page-cover>.container>.row {
+    min-height: 400px;
+    height: calc(20vh);
+}
+
+.site-blocks-cover h1 {
+    font-size: 5rem;
+    font-weight: 400;
+    color: #fff;
+    font-weight: 900;
+}
+
+@media (max-width: 991.98px) {
+    .site-blocks-cover h1 {
+        font-size: 2rem;
+    }
+}
+
+.site-blocks-cover p {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.site-blocks-cover p.lead {
+    font-size: 20px;
+}
+
+.site-blocks-cover .intro-text {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+@media (max-width: 991.98px) {
+    .site-blocks-cover .display-1 {
+        font-size: 3rem;
+    }
+}
+
+.btn {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 20px;
+    letter-spacing: .2rem;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+    outline: none;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.btn.btn-black {
+    border-width: 2px;
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+.btn.btn-black:hover {
+    color: #000;
+    background-color: transparent;
+}
+
+.btn.btn-black.btn-outline-black {
+    color: #000;
+    background-color: transparent;
+}
+
+.btn.btn-black.btn-outline-black:hover {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+.btn.btn-white {
+    border-width: 2px;
+    border-color: #fff;
+    background: #fff;
+    color: #000;
+}
+
+.btn.btn-white:hover {
+    color: #fff;
+    background-color: transparent;
+}
+
+.btn.btn-white.btn-outline-white {
+    color: #fff;
+    background-color: transparent;
+}
+
+.btn.btn-white.btn-outline-white:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #000;
+}
+
+.site-section {
+    padding: 2.5em 0;
+}
+
+@media (min-width: 768px) {
+    .site-section {
+        padding: 5em 0;
+    }
+}
+
+.site-section.site-section-sm {
+    padding: 4em 0;
+}
+
+.site-section-heading {
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    position: relative;
+    font-size: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .site-section-heading {
+        font-size: 3rem;
+    }
+}
+
+.section-sub-title {
+    font-size: 13px;
+    color: #adb5bd;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.section-title {
+    color: #000;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+@media (max-width: 991.98px) {
+    .section-title {
+        font-size: 30px;
+    }
+}

@@ -1,14 +1,16 @@
-<div class="products">
-    <div class="row">
-        <div class="col-3">
-            <filter [category]="category"></filter>
-        </div>
-        <div class="col">
-            <div class="row">
-                <div class="col-3" *ngFor="let p of filteredProducts; index as i">
-                    <product-cart [product]="p" [shopping-cart]="cart">
-                    </product-cart>
-                    <!-- <div *ngIf="(i+1)%2 === 0" class="w-100"></div> -->
+<div class="container pt-5 pb-5">
+    <div class="products">
+        <div class="row">
+            <div class="col-3">
+                <filter [category]="category"></filter>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-3" *ngFor="let p of filteredProducts; index as i">
+                        <product-cart [product]="p" [shopping-cart]="cart">
+                        </product-cart>
+                        <!-- <div *ngIf="(i+1)%2 === 0" class="w-100"></div> -->
+                    </div>
                 </div>
             </div>
         </div>
