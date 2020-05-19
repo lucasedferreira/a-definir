@@ -54,15 +54,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
             // get all products
             if (request.url.endsWith('/products') && request.method === 'GET') {
-                if (!isLoggedIn) return unauthorised();
-                console.log('products', products);
                 return ok(products);
             }
 
             // get all categories
             if (request.url.endsWith('/categories') && request.method === 'GET') {
-                if (!isLoggedIn) return unauthorised();
-                console.log('categories', categories);
                 return ok(categories);
             }
 
