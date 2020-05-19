@@ -1,15 +1,5 @@
-﻿<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" routerLink="/products" *ngIf="isLogged">Products</a>
-        <a class="nav-item nav-link" routerLink="/my-account" *ngIf="isLogged">My Account</a>
-        <a class="nav-item nav-link" (click)="logout()" *ngIf="isLogged">Logout</a>
-        <a class="nav-item nav-link" (click)="login()" *ngIf="!isLogged">Login</a>
-    </div>
-</nav>
+﻿<app-header></app-header>
 
-<!-- main app container -->
 <div class="jumbotron">
     <div class="container">
         <div class="row">
@@ -20,9 +10,4 @@
     </div>
 </div>
 
-<!-- credits -->
-<div class="text-center">
-    <p>
-        A Definir
-    </p>
-</div>
+<app-footer></app-footer>

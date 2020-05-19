@@ -17,14 +17,17 @@ import { ProductService, ShoppingCartService, CategoryService } from './_service
 import { ProductCartComponent } from './products/product-cart/product-cart.component';
 import { FilterComponent } from './products/filter/filter.component';
 import { MyAccountComponent } from './my-account/my-account.component';
-
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';;
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
         routing
-    ],
+,
+        FontAwesomeModule    ],
     declarations: [
         AppComponent,
         HomeComponent,
@@ -32,7 +35,9 @@ import { MyAccountComponent } from './my-account/my-account.component';
         ProductsComponent,
         ProductCartComponent ,
         FilterComponent ,
-        MyAccountComponent  ],
+        MyAccountComponent ,
+        HeaderComponent ,
+        FooterComponent],
     providers: [
         // provider used to create fake backend
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

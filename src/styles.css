@@ -1,0 +1,13 @@
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: #fff;
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 400;
+    color: gray;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
