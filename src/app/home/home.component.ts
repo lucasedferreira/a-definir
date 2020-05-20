@@ -21,17 +21,16 @@ export class HomeComponent {
                 private productService: ProductService) { }
 
     ngOnInit() {
-        this.isLogged = this.authenticationService.isLogged()
+        this.isLogged = this.authenticationService.isLogged();
         if (this.isLogged) {
             this.userService.getAll().pipe(first()).subscribe(users => {
                 this.users = users;
             });
         }
 
-        this.productService.getAll()
-            .subscribe(products => {
-                this.products = products;
-                console.log('this.products', this.products);
-            });
+        this.productService.getAll().subscribe(products => {
+            this.products = products;
+            console.log('this.products', this.products);
+        });
     }
 }

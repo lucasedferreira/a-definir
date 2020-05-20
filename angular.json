@@ -25,7 +25,11 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/icomoon/style.css"
+              "node_modules/icomoon/style.css",
+              "node_modules/flat-icons/creative.css",
+              "node_modules/flat-icons/ecommerce.css",
+              "node_modules/flat-icons/interface.css",
+              "node_modules/flat-icons/technology.css"
             ],
             "scripts": []
           },
@@ -89,8 +93,7 @@
               "src/app/_assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/icomoon/style.css"
+              "src/styles.css"
             ],
             "scripts": []
           }

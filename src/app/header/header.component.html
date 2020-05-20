@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="navbar-nav">
             <a class="nav-item nav-link" routerLink="/">Home</a>
@@ -8,4 +8,145 @@
             <a class="nav-item nav-link" (click)="login()" *ngIf="!isLogged">Login</a>
         </div>
     </nav>
+</header> -->
+
+<header class="header-section">
+    <div class="header-top">
+        <div class="container">
+            <div class="ht-left">
+                <div class="mail-service">
+                    <fa-icon [icon]="faEnvelope"></fa-icon>
+                    lucasedbatista@gmail.com
+                </div>
+                <div class="phone-service">
+                    <fa-icon [icon]="faPhone"></fa-icon>
+                    +65 (47) 98848-9411
+                </div>
+            </div>
+            <div class="ht-right">
+                <a (click)="logout()" *ngIf="isLogged" class="login-panel pointer"><fa-icon [icon]="faUser"></fa-icon> Logout</a>
+                <a (click)="login()" *ngIf="!isLogged" class="login-panel pointer"><fa-icon [icon]="faUser"></fa-icon> Login</a>
+                <!-- <div class="lan-selector">
+                    <select class="language_drop" name="countries" id="countries" style="width:300px;">
+                        <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt" data-title="English">English</option>
+                        <option value='yu' data-image="img/flag-2.jpg" data-imagecss="flag yu" data-title="Bangladesh">German </option>
+                    </select>
+                </div> -->
+                <div class="top-social">
+                    <a href="#"><span class="icon-facebook"></span></a>
+                    <a href="#"><span class="icon-twitter"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="inner-header">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="logo">
+                        <a href="./index.html">
+                            <!-- <img src="img/logo.png" alt=""> -->
+                            logo
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7">
+                    <div class="advanced-search">
+                        <div class="input-group">
+                            <input type="text" placeholder="What do you need?">
+                            <button type="button"><fa-icon [icon]="faSearch"></fa-icon></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-right col-md-3">
+                    <ul class="nav-right">
+                        <li class="heart-icon">
+                            <a href="#">
+                                <fa-icon [icon]="faHeart"></fa-icon>
+                                <span>1</span>
+                            </a>
+                        </li>
+                        <li class="cart-icon">
+                            <a href="#">
+                                <fa-icon [icon]="faShoppingCart"></fa-icon>
+                                <span>2</span>
+                            </a>
+                            <div class="cart-hover">
+                                <div class="select-items">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="si-text">
+                                                    <div class="product-selected">
+                                                        <p>R$60.00 x 1</p>
+                                                        <h6>Produto 1</h6>
+                                                    </div>
+                                                </td>
+                                                <td class="si-close">
+                                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="si-text">
+                                                    <div class="product-selected">
+                                                        <p>R$60.00 x 1</p>
+                                                        <h6>Produto 2</h6>
+                                                    </div>
+                                                </td>
+                                                <td class="si-close">
+                                                    <fa-icon [icon]="faTimes"></fa-icon>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="select-total">
+                                    <span>total:</span>
+                                    <h5>$120.00</h5>
+                                </div>
+                                <div class="select-button">
+                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                    <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cart-price">$120.00</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-item">
+        <div class="container">
+            <!-- <div class="nav-depart">
+                <div class="depart-btn">
+                    <fa-icon [icon]="faBars"></fa-icon>
+                    <span>All departments</span>
+                    <ul class="depart-hover">
+                        <li class="active"><a href="#">Women’s Clothing</a></li>
+                        <li><a href="#">Men’s Clothing</a></li>
+                        <li><a href="#">Underwear</a></li>
+                        <li><a href="#">Kid's Clothing</a></li>
+                        <li><a href="#">Brand Fashion</a></li>
+                        <li><a href="#">Accessories/Shoes</a></li>
+                        <li><a href="#">Luxury Brands</a></li>
+                        <li><a href="#">Brand Outdoor Apparel</a></li>
+                    </ul>
+                </div>
+            </div> -->
+            <nav class="nav-menu mobile-menu">
+                <ul>
+                    <li class="active"><a routerLink="/">Home</a></li>
+                    <li><a routerLink="/products">Shop</a></li>
+                    <li><a href="#">test</a>
+                        <ul class="dropdown">
+                            <li><a href="#">test</a></li>
+                            <li><a href="#">test</a></li>
+                            <li><a href="#">test</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </header>
