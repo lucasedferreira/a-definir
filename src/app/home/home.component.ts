@@ -22,11 +22,11 @@ export class HomeComponent {
 
     ngOnInit() {
         this.isLogged = this.authenticationService.isLogged();
-        if (this.isLogged) {
-            this.userService.getAll().pipe(first()).subscribe(users => {
-                this.users = users;
-            });
-        }
+        // if (this.isLogged) {
+        //     this.userService.getAll().pipe(first()).subscribe(users => {
+        //         this.users = users;
+        //     });
+        // }
 
         this.productService.getAll().subscribe(products => {
             this.products = products;

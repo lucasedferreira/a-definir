@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'server.a-definir'
+  apiUrl: 'http://server.definir'
 };
 
 /*

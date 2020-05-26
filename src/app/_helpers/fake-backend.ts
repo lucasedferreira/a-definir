@@ -8,10 +8,6 @@ import { User, Product, Category } from '../_models';
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const users: User[] = [
-            { id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' },
-            { id: 2, username: 'iuk', password: '123', firstName: 'Lucas', lastName: 'Eduardo' }
-        ];
 
         const categories: Category[] = [
             { id: 1, name: 'women' },
@@ -27,30 +23,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             { id: 6, title: 'Produto 6', price: 19.99, category: 'men', imageUrl: 'https://colorlib.com/preview/theme/fashi/img/products/man-1.jpg' }
         ];
 
-        const authHeader = request.headers.get('Authorization');
-        const isLoggedIn = authHeader && authHeader.startsWith('Bearer fake-jwt-token');
+        // const authHeader = request.headers.get('Authorization');
+        // const isLoggedIn = authHeader && authHeader.startsWith('Bearer fake-jwt-token');
 
         // wrap in delayed observable to simulate server api call
         return of(null).pipe(mergeMap(() => {
-
-            // authenticate - public
-            if (request.url.endsWith('/users/authenticate') && request.method === 'POST') {
-                const user = users.find(x => x.username === request.body.username && x.password === request.body.password);
-                if (!user) return error('Username or password is incorrect');
-                return ok({
-                    id: user.id,
-                    username: user.username,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    token: `fake-jwt-token`
-                });
-            }
-
-            // get all users
-            if (request.url.endsWith('/users') && request.method === 'GET') {
-                if (!isLoggedIn) return unauthorised();
-                return ok(users);
-            }
 
             // get all products
             if (request.url.endsWith('/products') && request.method === 'GET') {
