@@ -18,16 +18,18 @@ import { ProductCartComponent } from './products/product-cart/product-cart.compo
 import { FilterComponent } from './products/filter/filter.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';;
+import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        routing
-,
-        FontAwesomeModule    ],
+        routing,
+        FontAwesomeModule,
+        BrowserAnimationsModule
+    ],
     declarations: [
         AppComponent,
         HomeComponent,

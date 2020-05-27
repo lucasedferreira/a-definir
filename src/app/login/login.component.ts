@@ -5,14 +5,32 @@ import { first } from 'rxjs/operators';
 
 import { AuthenticationService } from '../_services';
 
+import { trigger, state, style, animate, transition } from '@angular/animations'
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({
+    templateUrl: 'login.component.html',
+    styleUrls: ['./login.component.css'],
+    animations: [
+        trigger('toggleLoginRegister', [
+            state('login', style({
+                right: 'calc(50% - 50px)'
+            })),
+            state('register', style({
+                right: '50px'
+            })),
+            transition('* => *', [
+                animate('250ms 0s ease-in-out')
+            ])
+        ])
+    ]
+})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
     submitted = false;
     returnUrl: string;
     error = '';
+    pageStatus = 'login';
 
     constructor(
         private formBuilder: FormBuilder,
@@ -32,6 +50,11 @@ export class LoginComponent implements OnInit {
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
+
+    toggleLoginRegister() {
+        this.pageStatus = this.pageStatus == 'login' ? 'register' : 'login';
+        console.log('this.pageStatus', this.pageStatus);
     }
 
     // convenience getter for easy access to form fields

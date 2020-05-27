@@ -1,0 +1,249 @@
+body {
+    height: 100vh;
+    min-height: 550px;
+    position: relative;
+    overflow-y: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #E66866;
+}
+
+.bg-login {
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, #8AC8C6 , #E9E7E6, #FFF);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+.bg-login .cover {
+    /* background-color: #E9E7E6;
+    height: 50vh; */
+}
+
+.container-login {
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.login-reg-panel {
+    position: absolute;
+    text-align: center;
+    width: 70%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 400px;
+    background-color: #E66866;
+    z-index: 2;
+}
+
+.white-panel {
+    background-color: #E9E7E6;
+    height: 500px;
+    position: absolute;
+    top: -50px;
+    width: 50%;
+    right: calc(50% - 50px);
+    z-index: 0;
+    box-shadow: 0 0 15px 9px #00000096;
+}
+
+.login-reg-panel input[type="radio"] {
+    position: relative;
+    display: none;
+}
+
+.login-reg-panel {
+    color: #FFF;
+}
+
+.login-reg-panel #label-login, .login-reg-panel #label-register {
+    border: 1px solid #FFF;
+    padding: 5px 5px;
+    width: 150px;
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.login-info-box {
+    width: 30%;
+    padding: 0 50px;
+    top: 20%;
+    left: 0;
+    position: absolute;
+    text-align: left;
+}
+
+.register-info-box {
+    width: 30%;
+    padding: 0 50px;
+    top: 20%;
+    right: 0;
+    position: absolute;
+    text-align: left;
+}
+
+.login-show, .register-show {
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+    color: #242424;
+    text-align: left;
+    padding: 50px;
+}
+
+.show-log-panel {
+    display: block;
+    opacity: 0.9;
+}
+
+.login-show input[type="text"], .login-show input[type="password"] {
+    width: 100%;
+    display: block;
+    margin: 30px 0 0;
+    padding: 15px;
+    border: 1px solid #b5b5b5;
+    outline: none;
+}
+
+.login-show .invalid-feedback {
+ position: fixed;
+}
+
+.login-show .btn {
+    max-width: 150px;
+    width: 100%;
+    padding: 10px;
+    float: right;
+    font-size: 15px;
+}
+
+.login-show a {
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.register-show input[type="text"], .register-show input[type="password"] {
+    width: 100%;
+    display: block;
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #b5b5b5;
+    outline: none;
+}
+
+.register-show input[type="button"] {
+    max-width: 150px;
+    width: 100%;
+    background: #444444;
+    color: #f9f9f9;
+    border: none;
+    padding: 10px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    float: right;
+    cursor: pointer;
+}
+
+.register-show .btn {
+    max-width: 150px;
+    width: 100%;
+    padding: 10px;
+    float: left;
+    font-size: 15px;
+}
+
+.credit {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #3B3B25;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 99;
+}
+
+a {
+    text-decoration: none;
+    color: #2c7715;
+}
+
+.btn {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 20px;
+    letter-spacing: .2rem;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+    outline: none;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.btn.btn-black {
+    border-width: 2px;
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+.btn.btn-black:hover {
+    color: #000;
+    background-color: transparent;
+}
+
+.btn.btn-black.btn-outline-black {
+    color: #000;
+    background-color: transparent;
+}
+
+.btn.btn-black.btn-outline-black:hover {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+.btn.btn-white {
+    border-width: 2px;
+    border-color: #fff;
+    background: #fff;
+    color: #000;
+}
+
+.btn.btn-white:hover {
+    color: #fff;
+    background-color: transparent;
+}
+
+.btn.btn-white.btn-outline-white {
+    color: #fff;
+    background-color: transparent;
+}
+
+.btn.btn-white.btn-outline-white:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #000;
+}
