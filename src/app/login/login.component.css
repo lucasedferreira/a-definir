@@ -12,7 +12,7 @@ a {
 
 .bg-login {
     height: 100vh;
-    background-image: linear-gradient(to bottom right, #8AC8C6 , #E9E7E6, #FFF);
+    background-image: linear-gradient(to bottom right, #8AC8C6, #E9E7E6, #FFF);
     position: fixed;
     top: 0;
     left: 0;
@@ -113,6 +113,30 @@ a {
     opacity: 0.9;
 }
 
+.social-btn {
+    font-weight: 100;
+    color: white;
+    width: 180px;
+    font-size: 0.9rem;
+}
+
+.btn-gl {
+    background-color: #DF4B3B;
+}
+
+.btn-gl:hover {
+    background-color: #FF6E60;
+}
+
+.btn-fb{
+    color: #fff;
+    background-color:#3b5998;
+}
+.btn-fb:hover{
+    color: #fff;
+    background-color:#496ebc 
+}
+
 .login-show input[type="text"], .login-show input[type="password"] {
     width: 100%;
     display: block;
@@ -123,10 +147,10 @@ a {
 }
 
 .login-show .invalid-feedback {
- position: fixed;
+    position: fixed;
 }
 
-.login-show .btn {
+.login-show .btn-black {
     max-width: 150px;
     width: 100%;
     padding: 10px;
@@ -161,7 +185,7 @@ a {
     cursor: pointer;
 }
 
-.register-show .btn {
+.register-show .btn-black {
     max-width: 150px;
     width: 100%;
     padding: 10px;
@@ -189,7 +213,7 @@ a {
     color: #2c7715;
 }
 
-.btn {
+.btn.custom-btn {
     font-size: 12px;
     font-weight: 600;
     padding: 6px 20px;

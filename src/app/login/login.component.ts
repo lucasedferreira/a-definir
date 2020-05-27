@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../_services';
 
 import { trigger, state, style, animate, transition } from '@angular/animations'
+import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 
 @Component({
     templateUrl: 'login.component.html',
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private socialAuthService: AuthService
     ) { }
 
     ngOnInit() {
@@ -44,9 +46,6 @@ export class LoginComponent implements OnInit {
             email: ['', Validators.required],
             password: ['', Validators.required]
         });
-
-        // reset login status
-        this.authenticationService.logout();
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -69,7 +68,7 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.email.value, this.f.password.value)
+        this.authenticationService.login({email: this.f.email.value, password: this.f.password.value})
             .pipe(first())
             .subscribe(
                 data => {
@@ -79,5 +78,25 @@ export class LoginComponent implements OnInit {
                     this.error = error;
                     this.loading = false;
                 });
+    }
+
+    signInWithGoogle(): void {
+        this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(socialUser => {
+            this.loading = true;
+            this.authenticationService.login(socialUser)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    this.router.navigate([this.returnUrl]);
+                },
+                error => {
+                    this.error = error;
+                    this.loading = false;
+                });
+        });
+    }
+
+    signInWithFacebook(): void {
+        this.error = 'In progress...';
     }
 }

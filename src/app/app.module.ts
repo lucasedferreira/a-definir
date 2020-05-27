@@ -21,6 +21,18 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
+
+const config = new AuthServiceConfig([
+    {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('279414834705-tcgk7k3c81q40rmtv961gq6smffadloi.apps.googleusercontent.com')
+    }
+]);
+export function provideConfig() {
+    return config;
+}
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -28,22 +40,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
         HttpClientModule,
         routing,
         FontAwesomeModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        SocialLoginModule
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         LoginComponent,
         ProductsComponent,
-        ProductCartComponent ,
-        FilterComponent ,
-        MyAccountComponent ,
-        HeaderComponent ,
+        ProductCartComponent,
+        FilterComponent,
+        MyAccountComponent,
+        HeaderComponent,
         FooterComponent],
     providers: [
         // provider used to create fake backend
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: AuthServiceConfig, useFactory: provideConfig },
 
         fakeBackendProvider,
         ProductService,

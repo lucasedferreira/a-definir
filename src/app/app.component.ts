@@ -7,7 +7,6 @@ export class AppComponent {
 
     constructor(private router: Router) {
         router.events.subscribe(event => {
-            console.log('router.url', router.url);
             if(router.url === '/login') {
                 this.showHeaderAndFooter = false;
             }else {
