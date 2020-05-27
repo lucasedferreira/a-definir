@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://server.definir'
+  apiUrl: 'https://adefinir.herokuapp.com'
 };
