@@ -7,21 +7,24 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { fakeBackendProvider } from './_helpers';
 
 import { AppComponent } from './app.component';
-import { routing } from './app.routing';
+import { appRoutes } from './app.routing';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './public/home/home.component';
 import { LoginComponent } from './login';;
-import { ProductsComponent } from './products/products.component'
+import { ProductsComponent } from './public/products/products.component'
 import { ProductService, ShoppingCartService, CategoryService } from './_services';;
-import { ProductCartComponent } from './products/product-cart/product-cart.component';
-import { FilterComponent } from './products/filter/filter.component';
-import { MyAccountComponent } from './my-account/my-account.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { ProductCartComponent } from './public/products/product-cart/product-cart.component';
+import { FilterComponent } from './public/products/filter/filter.component';
+import { MyAccountComponent } from './public/my-account/my-account.component';
+import { HeaderComponent } from './public/header/header.component';
+import { FooterComponent } from './public/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
+import { RouterModule } from '@angular/router';
 
 const config = new AuthServiceConfig([
     {
@@ -38,10 +41,11 @@ export function provideConfig() {
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        routing,
+        RouterModule.forRoot(appRoutes),
         FontAwesomeModule,
         BrowserAnimationsModule,
-        SocialLoginModule
+        SocialLoginModule,
+        DashboardModule
     ],
     declarations: [
         AppComponent,

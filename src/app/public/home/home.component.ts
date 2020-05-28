@@ -1,8 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User, Product, ShoppingCart } from '../_models';
-import { UserService, AuthenticationService, ProductService } from '../_services';
+import { User, Product, ShoppingCart } from '../../_models';
+import { UserService, AuthenticationService, ProductService } from '../../_services';
 import { Observable } from 'rxjs';
 
 @Component({
