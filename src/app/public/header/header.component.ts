@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../_services';
+import { AuthenticationService } from '../../_services';
 import { faPhoneAlt, faEnvelope, faUser, faSearch, faHeart, faShoppingCart, faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

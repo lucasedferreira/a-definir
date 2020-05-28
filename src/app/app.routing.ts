@@ -1,12 +1,12 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './public/home/home.component';
 import { LoginComponent } from './login';
 import { AuthGuard } from './_guards';
-import { ProductsComponent } from './products/products.component';
-import { MyAccountComponent } from './my-account/my-account.component';
+import { ProductsComponent } from './public/products/products.component';
+import { MyAccountComponent } from './public/my-account/my-account.component';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
     {
         path: '',
         component: HomeComponent
@@ -28,5 +28,3 @@ const appRoutes: Routes = [
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
-
-export const routing = RouterModule.forRoot(appRoutes);
