@@ -10,11 +10,12 @@ export const dashboardRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             {
-                path: 'home',
+                path: '',
                 component: DasboardHomeComponent,
                 data: {role: 'admin'},
                 canActivate: [RoleGuard]
-            }
-        ]
+            },
+            { path: '**', redirectTo: 'dashboard' }
+        ],
     }
 ];

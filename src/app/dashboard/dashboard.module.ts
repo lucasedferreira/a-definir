@@ -6,6 +6,8 @@ import { DasboardHomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { DashboardComponent } from './dashboard.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
@@ -17,7 +19,9 @@ import { DashboardComponent } from './dashboard.component';
   ],
   declarations: [
     DashboardComponent,
-    DasboardHomeComponent
+    DasboardHomeComponent,
+    NavbarComponent,
+    SidebarComponent
   ],
   providers: [
     AuthGuard
