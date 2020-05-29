@@ -56,7 +56,8 @@ export function provideConfig() {
         FilterComponent,
         MyAccountComponent,
         HeaderComponent,
-        FooterComponent],
+        FooterComponent
+    ],
     providers: [
         // provider used to create fake backend
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
