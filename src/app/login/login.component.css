@@ -5,7 +5,7 @@ body {
     overflow-y: hidden;
 }
 
-a {
+.forgotPassword {
     text-decoration: none;
     color: #E66866;
 }
@@ -52,7 +52,7 @@ a {
 
 .white-panel {
     background-color: #E9E7E6;
-    height: 500px;
+    min-height: 500px;
     position: absolute;
     top: -50px;
     width: 50%;
@@ -108,35 +108,6 @@ a {
     padding: 50px;
 }
 
-.show-log-panel {
-    display: block;
-    opacity: 0.9;
-}
-
-.social-btn {
-    font-weight: 100;
-    color: white;
-    width: 180px;
-    font-size: 0.9rem;
-}
-
-.btn-gl {
-    background-color: #DF4B3B;
-}
-
-.btn-gl:hover {
-    background-color: #FF6E60;
-}
-
-.btn-fb{
-    color: #fff;
-    background-color:#3b5998;
-}
-.btn-fb:hover{
-    color: #fff;
-    background-color:#496ebc 
-}
-
 .login-show input[type="text"], .login-show input[type="password"] {
     width: 100%;
     display: block;
@@ -146,7 +117,7 @@ a {
     outline: none;
 }
 
-.login-show .invalid-feedback {
+.invalid-feedback {
     position: fixed;
 }
 
@@ -166,23 +137,10 @@ a {
 .register-show input[type="text"], .register-show input[type="password"] {
     width: 100%;
     display: block;
-    margin: 20px 0;
+    margin: 30px 0 0;
     padding: 15px;
     border: 1px solid #b5b5b5;
     outline: none;
-}
-
-.register-show input[type="button"] {
-    max-width: 150px;
-    width: 100%;
-    background: #444444;
-    color: #f9f9f9;
-    border: none;
-    padding: 10px;
-    text-transform: uppercase;
-    border-radius: 2px;
-    float: right;
-    cursor: pointer;
 }
 
 .register-show .btn-black {
@@ -191,26 +149,6 @@ a {
     padding: 10px;
     float: left;
     font-size: 15px;
-}
-
-.credit {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: #3B3B25;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    z-index: 99;
-}
-
-a {
-    text-decoration: none;
-    color: #2c7715;
 }
 
 .btn.custom-btn {
@@ -247,27 +185,4 @@ a {
     border-color: #000;
     background: #000;
     color: #fff;
-}
-
-.btn.btn-white {
-    border-width: 2px;
-    border-color: #fff;
-    background: #fff;
-    color: #000;
-}
-
-.btn.btn-white:hover {
-    color: #fff;
-    background-color: transparent;
-}
-
-.btn.btn-white.btn-outline-white {
-    color: #fff;
-    background-color: transparent;
-}
-
-.btn.btn-white.btn-outline-white:hover {
-    border-color: #fff;
-    background: #fff;
-    color: #000;
 }

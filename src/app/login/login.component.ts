@@ -17,7 +17,8 @@ import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
                 right: 'calc(50% - 50px)'
             })),
             state('register', style({
-                right: '50px'
+                right: '50px',
+                height: '550px'
             })),
             transition('* => *', [
                 animate('250ms 0s ease-in-out')
@@ -27,11 +28,13 @@ import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
+    registerForm: FormGroup;
     loading = false;
-    submitted = false;
+    loginSubmitted = false;
+    registerSubmitted = false;
     returnUrl: string;
     error = '';
-    pageStatus = 'login';
+    pageStatus: string;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -47,32 +50,74 @@ export class LoginComponent implements OnInit {
             password: ['', Validators.required]
         });
 
+        this.registerForm = this.formBuilder.group({
+            name: ['', Validators.required],
+            email: ['', Validators.required],
+            password: ['', Validators.required, Validators.minLength(5)],
+            confirmPass: ['', Validators.required]
+        }, {validator: this.confirmedValidator('password', 'confirmPass') });
+
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+        let type = this.route.snapshot.paramMap.get('type');
+        this.pageStatus = type ? type.toLowerCase() : 'login';
     }
 
     toggleLoginRegister() {
         this.pageStatus = this.pageStatus == 'login' ? 'register' : 'login';
-        console.log('this.pageStatus', this.pageStatus);
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
+    get formLogin() { return this.loginForm.controls; }
+    get formRegister() { return this.registerForm.controls; }
 
-    onSubmit() {
-        this.submitted = true;
+    login() {
+        this.loginSubmitted = true;
 
-        // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
         }
 
         this.loading = true;
-        this.authenticationService.login({email: this.f.email.value, password: this.f.password.value})
+        this.authenticationService.login({ email: this.formLogin.email.value, password: this.formLogin.password.value })
             .pipe(first())
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
+                },
+                error => {
+                    this.error = error;
+                    this.loading = false;
+                });
+    }
+
+    confirmedValidator(controlName: string, matchingControlName: string){
+        return (formGroup: FormGroup) => {
+            const control = formGroup.controls[controlName];
+            const matchingControl = formGroup.controls[matchingControlName];
+            if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
+                return;
+            }
+            if (control.value !== matchingControl.value) {
+                matchingControl.setErrors({ confirmedValidator: true });
+            } else {
+                matchingControl.setErrors(null);
+            }
+        }
+    }
+
+    register() {
+        this.registerSubmitted = true;
+
+        if (this.registerForm.invalid) return;
+
+        this.loading = true;
+        this.authenticationService.register({ name: this.formRegister.name.value, email: this.formRegister.email.value, password: this.formRegister.password.value })
+            .pipe(first())
+            .subscribe(
+                data => {
+                    this.router.navigate(['/email-sent']);
                 },
                 error => {
                     this.error = error;
@@ -84,15 +129,15 @@ export class LoginComponent implements OnInit {
         this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(socialUser => {
             this.loading = true;
             this.authenticationService.login(socialUser)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.error = error;
-                    this.loading = false;
-                });
+                .pipe(first())
+                .subscribe(
+                    data => {
+                        this.router.navigate([this.returnUrl]);
+                    },
+                    error => {
+                        this.error = error;
+                        this.loading = false;
+                    });
         });
     }
 

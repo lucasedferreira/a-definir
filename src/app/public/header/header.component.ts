@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../_services';
 import { faPhoneAlt, faEnvelope, faUser, faSearch, faHeart, faShoppingCart, faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
+import { User } from 'src/app/_models';
 
 @Component({
   selector: 'app-header',
@@ -19,12 +20,14 @@ export class HeaderComponent{
   faBars = faBars;
 
   isLogged: boolean;
+  user: User;
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
       this.isLogged = authenticationService.isLogged();
+      this.user = authenticationService.currentUserValue;
   }
 
   logout() {

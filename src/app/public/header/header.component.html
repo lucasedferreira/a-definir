@@ -26,6 +26,7 @@
             <div class="ht-right">
                 <a (click)="logout()" *ngIf="isLogged" class="login-panel pointer"><fa-icon [icon]="faUser"></fa-icon> Logout</a>
                 <a (click)="login()" *ngIf="!isLogged" class="login-panel pointer"><fa-icon [icon]="faUser"></fa-icon> Login</a>
+                <a routerLink="/dashboard" *ngIf="user?.role != 'client'" class="login-panel pointer mr-4"><i class="fas fa-user-cog"></i>Dashboard</a>
                 <!-- <div class="lan-selector">
                     <select class="language_drop" name="countries" id="countries" style="width:300px;">
                         <option value='yt' data-image="img/flag-1.jpg" data-imagecss="flag yt" data-title="English">English</option>

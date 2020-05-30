@@ -21,10 +21,12 @@ import { MyAccountComponent } from './public/my-account/my-account.component';
 import { HeaderComponent } from './public/header/header.component';
 import { FooterComponent } from './public/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LaddaModule } from 'angular2-ladda';
 
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
-import { RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';;
+import { EmailSentComponent } from './login/email-sent/email-sent.component'
 
 const config = new AuthServiceConfig([
     {
@@ -45,6 +47,10 @@ export function provideConfig() {
         FontAwesomeModule,
         BrowserAnimationsModule,
         SocialLoginModule,
+        LaddaModule.forRoot({
+            style: "slide-left",
+            spinnerColor: "#E66866"
+        }),
         DashboardModule
     ],
     declarations: [
@@ -57,7 +63,8 @@ export function provideConfig() {
         MyAccountComponent,
         HeaderComponent,
         FooterComponent
-    ],
+,
+        EmailSentComponent    ],
     providers: [
         // provider used to create fake backend
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

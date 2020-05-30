@@ -37,7 +37,8 @@
               "node_modules/flat-icons/creative.css",
               "node_modules/flat-icons/ecommerce.css",
               "node_modules/flat-icons/interface.css",
-              "node_modules/flat-icons/technology.css"
+              "node_modules/flat-icons/technology.css",
+              "node_modules/ladda/dist/ladda.min.css"
             ],
             "scripts": [
               "node_modules/admin-lte/plugins/jquery/jquery.min.js",
