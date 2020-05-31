@@ -5,26 +5,45 @@ import { AuthGuard } from '../_guards';
 import { DasboardHomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from "ng2-currency-mask";
+
 import { DashboardComponent } from './dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductModelComponent } from './products/product-model/product-model.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
-
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+  align: "left",
+  allowNegative: false,
+  decimal: ",",
+  precision: 2,
+  prefix: "R$ ",
+  suffix: "",
+  thousands: "."
+};
 
 @NgModule({
   imports: [
     BrowserModule,
     CommonModule,
-    RouterModule.forChild(dashboardRoutes)
+    ReactiveFormsModule,
+    RouterModule.forChild(dashboardRoutes),
+    CurrencyMaskModule
   ],
   declarations: [
     DashboardComponent,
     DasboardHomeComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProductsComponent,
+    ProductModelComponent
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
   ],
   bootstrap: [DashboardComponent]
 })

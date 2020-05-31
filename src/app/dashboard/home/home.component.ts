@@ -10,7 +10,6 @@ export class DasboardHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('aaa');
   }
 
 }
