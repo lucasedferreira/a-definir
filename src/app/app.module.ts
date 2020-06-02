@@ -14,7 +14,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './public/home/home.component';
 import { LoginComponent } from './login';;
 import { ProductsComponent } from './public/products/products.component'
-import { ProductService, ShoppingCartService, CategoryService } from './_services';;
+import { ProductService, ShoppingCartService, ProductCategoryService } from './_services';;
 import { ProductCartComponent } from './public/products/product-cart/product-cart.component';
 import { FilterComponent } from './public/products/filter/filter.component';
 import { MyAccountComponent } from './public/my-account/my-account.component';
@@ -49,7 +49,7 @@ export function provideConfig() {
         SocialLoginModule,
         LaddaModule.forRoot({
             style: "slide-left",
-            spinnerColor: "#E66866"
+            spinnerColor: "#FFF"
         }),
         DashboardModule
     ],
@@ -74,7 +74,7 @@ export function provideConfig() {
         fakeBackendProvider,
         ProductService,
         ShoppingCartService,
-        CategoryService
+        ProductCategoryService
     ],
     bootstrap: [AppComponent]
 })

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from "ng2-currency-mask";
+import { LaddaModule } from 'angular2-ladda';
 
 import { DashboardComponent } from './dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -31,7 +32,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(dashboardRoutes),
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    LaddaModule
   ],
   declarations: [
     DashboardComponent,

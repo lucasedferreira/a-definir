@@ -1,7 +1,7 @@
 <div class="modal fade" id="modal-product-register">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <form [formGroup]="productForm" (ngSubmit)="test()">
+            <form [formGroup]="productForm" (ngSubmit)="submit()">
                 <div class="modal-header">
                     <h4 class="modal-title">{{product?.id ? 'Edit Product' : 'Product Register'}}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -27,10 +27,14 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control" rows="3" placeholder="Description ..."></textarea>
+                                <label for="category">Category</label>
+                                <select formControlName="categoryID" class="form-control" id="category">
+                                    <option *ngFor="let category of categories; let i = index" [value]="category.id">
+                                        {{category.name}}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -38,8 +42,18 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
+                                <label>Description</label>
+                                <textarea formControlName="description" class="form-control" rows="3" placeholder="Description ..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
                                 <div class="custom-control custom-checkbox">
                                     <input class="custom-control-input" type="checkbox" id="available"
+                                        formControlName="available"
                                         [checked]="product?.available">
                                     <label for="available" class="custom-control-label">Available</label>
                                 </div>
@@ -50,20 +64,23 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="customFile">Images</label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                <label>Images</label>
+                                <div class="custom-file" *ngFor="let image of images; index as i">
+                                    <img [src]="images[i].file" *ngIf="images[i].file" style="max-height: 50px;">
+                                    <input type="file" class="file-input" id="customFile-{{i}}" (change)="onFileChange($event, i)">
+                                    <label *ngIf="!images[i].name" class="custom-file-label" for="customFile-{{i}}">Choose file</label>
+                                    <label *ngIf="images[i].name" class="custom-file-label" for="customFile-{{i}}">{{images[i].name}}</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 text-center"><button class="btn btn-primary">Add image <i
-                                    class="fas fa-plus ml-1"></i></button></div>
+                        <div class="col-12 text-center">
+                            <button type="button" class="btn btn-primary" (click)="addImage()">Add image <i class="fas fa-plus ml-1"></i></button>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Save" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" [ladda]="loading">Save</button>
                 </div>
             </form>
         </div>
