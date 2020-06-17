@@ -11,6 +11,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -21,7 +22,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     DashboardComponent,
     DasboardHomeComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   providers: [
     AuthGuard
