@@ -20,11 +20,12 @@ import { FilterComponent } from './public/products/filter/filter.component';
 import { MyAccountComponent } from './public/my-account/my-account.component';
 import { HeaderComponent } from './public/header/header.component';
 import { FooterComponent } from './public/footer/footer.component';
+import { RegisterProductsComponent } from './public/register-products/register-products.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
-import { RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';;
 
 const config = new AuthServiceConfig([
     {
@@ -56,7 +57,8 @@ export function provideConfig() {
         FilterComponent,
         MyAccountComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        RegisterProductsComponent
     ],
     providers: [
         // provider used to create fake backend
