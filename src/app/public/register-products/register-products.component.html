@@ -1,4 +1,7 @@
+
+ 
  <div class="container p-5">
+
     <form (submit)="registerNewProduct()" [formGroup]="registerProducts">
 
         <div class="form-group mb-3">
@@ -20,7 +23,6 @@
                     Favor preencher este campo.
                 </div>
             </div>
-
             
            
         <label>Gênero</label>
@@ -41,6 +43,9 @@
             <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
         </div>
 
+        <app-category-existing (categoryExisting)="receiveCategoryExisting($event)" ></app-category-existing>
+
+
         <label>Imagens das roupas</label>
         <div class="form-group">
             <div class="custom-file">
@@ -54,6 +59,9 @@
         
         <button [disabled]="!registerProducts.valid" class="btn btn-primary">Cadastrar produto</button>
         <div *ngIf="loading" class="spinner-border spinner" role="status"></div>
+
+        <div *ngIf="error" class="alert alert-danger mt-4">{{ error }}</div>
+        <div *ngIf="success" class="alert alert-success mt-4">{{ success }}</div>
      
     </form>
     

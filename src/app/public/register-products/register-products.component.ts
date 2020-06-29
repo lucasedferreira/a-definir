@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { RegisterProductsService } from 'src/app/_services/register-products.service';
@@ -13,7 +13,9 @@ import { RegisterProductsService } from 'src/app/_services/register-products.ser
 export class RegisterProductsComponent implements OnInit {
   registerProducts: FormGroup;
   loading = false;
-  error = '';
+  error: string;
+  success: string;
+  categoryReceiver = '';
   
   constructor(
     private formBuilder: FormBuilder,
@@ -36,11 +38,17 @@ export class RegisterProductsComponent implements OnInit {
   uploadFile(e) {
     const selectedFiles = <FileList>e.srcElement.files;
     const fileName = [];
+    this.registerProducts.value.fileImage = fileName;
 
     for(let i = 0; i < selectedFiles.length; i++){
       fileName.push(selectedFiles[i].name);
     }
     document.getElementById('customFileLabel').innerHTML = fileName.join(', ');
+  }
+
+  receiveCategoryExisting(category) {
+    this.categoryReceiver = category;
+    return this.categoryReceiver;
   }
 
   onResetForm() {
@@ -52,19 +60,20 @@ export class RegisterProductsComponent implements OnInit {
     if(this.registerProducts.valid) {
       
       this.loading = true;
-      this.registerProductService.addProductService( { title: this.r.title.value, description: this.r.description.value, 
-        sex: this.r.sex.value, valueItem: this.r.valueItem.value, fileImage: this.r.fileImage.value } )
+      this.registerProductService.addNewProduct( { title: this.r.title.value, description: this.r.description.value, sex: this.r.sex.value, 
+        valueItem: this.r.valueItem.value, selectCategoryExisting: this.categoryReceiver, fileImage: this.r.fileImage.value } )
         .pipe(first())
         .subscribe(
           data => {
-            console.log("data = " + data);
+            console.log(data);
             this.loading = false;
+            this.success = "Produto cadastrado com sucesso.";
             this.onResetForm();
           },
           error => {
-            this.error = error;
-            console.log(this.registerProducts.value)
+            console.log(error)
             this.loading = false;
+            this.error = "Não foi possível cadastrar um novo produto.";
           }
           
         )

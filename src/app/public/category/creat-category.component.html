@@ -1,0 +1,26 @@
+<div class="container p-5">
+    <form (submit)="creatCategory()" [formGroup]="infoCategory">
+        <div class="form-group mb-3">
+            <label>Nome da categoria</label>
+            <input formControlName="nameCategory" type="text" class="form-control"/>
+            <div class="invalid-feedback d-block" *ngIf="c.nameCategory.invalid && (c.nameCategory.dirty || c.nameCategory.touched)">
+                Favor preencher este campo.
+            </div>
+
+        </div>
+        <div class="form-group form-check">
+            <input formControlName="subCategory" type="checkbox" class="form-check-input">
+            <label class="form-check-label">Sub categoria</label>
+        </div>
+        <div *ngIf="infoCategory.value.subCategory">
+            <app-category-existing (categoryExisting)="receiveCategoryExisting($event)" ></app-category-existing>
+        </div>
+
+        <button [disabled]="!infoCategory.valid" class="btn btn-primary">Cadastrar produto</button>  
+        <div *ngIf="loading" class="spinner-border spinner" role="status"></div>
+
+        <div *ngIf="error" class="alert alert-danger mt-4">{{ error }}</div>
+        <div *ngIf="success" class="alert alert-success mt-4">{{ success }}</div>
+
+    </form>
+</div>

@@ -26,6 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { RouterModule } from '@angular/router';;
+import { CreatCategoryComponent } from './public/category/creat-category.component';;
+import { CategoryExistingComponent } from './public/category/category-existing/category-existing.component'
 
 const config = new AuthServiceConfig([
     {
@@ -58,7 +60,9 @@ export function provideConfig() {
         MyAccountComponent,
         HeaderComponent,
         FooterComponent,
-        RegisterProductsComponent
+        RegisterProductsComponent,
+        CreatCategoryComponent,
+        CategoryExistingComponent
     ],
     providers: [
         // provider used to create fake backend

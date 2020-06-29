@@ -8,20 +8,19 @@ import { environment } from 'src/environments/environment';
 export class RegisterProductsService {
   
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  addProductService(product: any){
-    return this.http.post<any>(`${environment.apiUrl}/product`, product)
-    .pipe(map(product => {
+  addNewProduct(product: any){
         
-        if (Object.keys(product).length !== 0) {
-            
+    if (Object.keys(product).length !== 0) {
+        return this.http.post<any>(`${environment.apiUrl}/product`, product)
+        .pipe(map(product => {
             console.log("O produto chegou no serviço com sucesso" + product)
-        }
+        }));
+            
+    }
+    
+    return product;
 
-        return product;
-    }));
   }
-
-
 }
