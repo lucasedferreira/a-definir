@@ -1,0 +1,7 @@
+<label>Nome da subcategoria</label>
+<div class="form-group mb-3">         
+    <select (change)="infoCategoryExisting($event)" class="form-control">
+        <option selected disabled >Selecione uma opção</option>
+        <option *ngFor="let s of teste1" >{{ s.name }}</option>   
+    </select>
+</div>

@@ -1,0 +1,69 @@
+
+ 
+ <div class="container p-5">
+
+    <form (submit)="registerNewProduct()" [formGroup]="registerProducts">
+
+        <div class="form-group mb-3">
+            <label>Titulo do produto</label>
+            <input formControlName="title" type="text" class="form-control" id="formGroupExampleInput">
+            <div class="invalid-feedback d-block" *ngIf="r.title.invalid && (r.title.dirty || r.title.touched)">
+                Favor preencher este campo.
+            </div>
+        </div>
+
+
+        <label>Valor</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">R$</span>
+        </div>
+                <input formControlName="valueItem" type="number" class="form-control" aria-label="Quantia">
+                <div class="invalid-feedback d-block" *ngIf="r.valueItem.invalid && (r.valueItem.dirty || r.valueItem.touched)">
+                    Favor preencher este campo.
+                </div>
+            </div>
+            
+           
+        <label>Gênero</label>
+        <div class="input-group mb-3">
+            <select class="form-control" formControlName="sex">
+                <option>Masculino</option>
+                <option>Feminino</option>
+                <option>Unissex</option>
+            </select>
+            <div class="invalid-feedback d-block" *ngIf="r.sex.invalid && (r.sex.dirty || r.sex.touched)">
+                Favor preencher este campo.
+            </div>
+        </div>
+
+
+        <label>Descrição do produto</label>
+        <div class="form-group mb-3">
+            <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+        </div>
+
+        <app-category-existing (categoryExisting)="receiveCategoryExisting($event)" ></app-category-existing>
+
+
+        <label>Imagens das roupas</label>
+        <div class="form-group">
+            <div class="custom-file">
+                <input formControlName="fileImage" (change)="uploadFile($event)" type="file" class="custom-file-input" id="customFile" multiple>
+                <label class="custom-file-label" for="customFile" id="customFileLabel">Escolher arquivo</label>
+            </div>
+            <div class="invalid-feedback d-block" *ngIf="r.fileImage.invalid && (r.fileImage.dirty || r.fileImage.touched)">
+                Favor preencher este campo.
+            </div>
+        </div>
+        
+        <button [disabled]="!registerProducts.valid" class="btn btn-primary">Cadastrar produto</button>
+        <div *ngIf="loading" class="spinner-border spinner" role="status"></div>
+
+        <div *ngIf="error" class="alert alert-danger mt-4">{{ error }}</div>
+        <div *ngIf="success" class="alert alert-success mt-4">{{ success }}</div>
+     
+    </form>
+    
+   
+</div>

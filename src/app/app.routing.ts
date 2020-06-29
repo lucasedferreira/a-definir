@@ -5,6 +5,8 @@ import { LoginComponent } from './login';
 import { AuthGuard } from './_guards';
 import { ProductsComponent } from './public/products/products.component';
 import { MyAccountComponent } from './public/my-account/my-account.component';
+import { RegisterProductsComponent } from './public/register-products/register-products.component';
+import { CreatCategoryComponent } from './public/category/creat-category.component';
 
 export const appRoutes: Routes = [
     {
@@ -23,6 +25,14 @@ export const appRoutes: Routes = [
     {
         path: 'products',
         component: ProductsComponent
+    },
+    {
+        path: 'register-products',
+        component: RegisterProductsComponent
+    },
+    {
+        path: 'creat-category',
+        component: CreatCategoryComponent
     },
 
     // otherwise redirect to home
