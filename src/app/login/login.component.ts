@@ -7,6 +7,7 @@ import { AuthenticationService } from '../_services';
 
 import { trigger, state, style, animate, transition } from '@angular/animations'
 import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
+import { Observable, timer } from 'rxjs';
 
 @Component({
     templateUrl: 'login.component.html',
@@ -28,13 +29,22 @@ import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
+    forgetForm: FormGroup;
     registerForm: FormGroup;
+
     loading = false;
     loginSubmitted = false;
+    forgetSubmitted = false;
+    emailSent = false;
     registerSubmitted = false;
+
     returnUrl: string;
     error = '';
     pageStatus: string;
+    flip = false;
+
+    counter$: Observable<number>;
+    count = 30;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -48,6 +58,10 @@ export class LoginComponent implements OnInit {
         this.loginForm = this.formBuilder.group({
             email: ['', Validators.required],
             password: ['', Validators.required]
+        });
+
+        this.forgetForm = this.formBuilder.group({
+            email: ['', Validators.required]
         });
 
         this.registerForm = this.formBuilder.group({
@@ -70,6 +84,7 @@ export class LoginComponent implements OnInit {
 
     // convenience getter for easy access to form fields
     get formLogin() { return this.loginForm.controls; }
+    get formForget() { return this.forgetForm.controls; }
     get formRegister() { return this.registerForm.controls; }
 
     login() {
@@ -89,6 +104,44 @@ export class LoginComponent implements OnInit {
                 error => {
                     this.error = error;
                     this.loading = false;
+                });
+    }
+
+    startTimer() {
+        timer(0,1000).subscribe(() => {
+            if(this.forgetSubmitted) {
+                if(this.count == 0) {
+                    this.forgetSubmitted = false;
+                    this.emailSent = false;
+                    this.count = 30;
+                }else {
+                    this.count = this.count - 1;
+                }
+            }
+        });
+    }
+
+    forgotPassword() {
+        if (this.forgetForm.invalid) {
+            return;
+        }
+
+        this.forgetSubmitted = true;
+        this.emailSent = false;
+
+        this.loading = true;
+        this.authenticationService.forgetPassword({ email: this.formForget.email.value})
+            .pipe(first())
+            .subscribe(
+                data => {
+                    this.emailSent = true;
+                    this.startTimer();
+                    this.loading = false;
+                },
+                error => {
+                    this.error = error;
+                    this.loading = false;
+                    this.startTimer();
                 });
     }
 

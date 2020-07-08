@@ -7,7 +7,7 @@ export class AppComponent {
 
     constructor(private router: Router) {
         router.events.subscribe(event => {
-            if(router.url.startsWith('/login') || router.url.startsWith('/dashboard')) {
+            if(router.url.startsWith('/login') || router.url.startsWith('/retrieval') || router.url.startsWith('/dashboard')) {
                 this.showHeaderAndFooter = false;
             }else {
                 this.showHeaderAndFooter = true;

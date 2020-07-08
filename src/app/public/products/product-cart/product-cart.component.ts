@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product, ShoppingCart } from 'src/app/_models';
 import { ShoppingCartService } from 'src/app/_services';
 import { faSearch, faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'product-cart',
@@ -12,6 +13,7 @@ export class ProductCartComponent implements OnInit {
   faSearch = faSearch;
   faShoppingCart = faShoppingCart;
   faHeart = faHeart;
+  imageUrl = environment.imageUrl + '/products/';
 
   @Input('product') product: Product;
   // tslint:disable-next-line:no-input-rename

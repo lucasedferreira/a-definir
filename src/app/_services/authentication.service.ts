@@ -50,8 +50,21 @@ export class AuthenticationService {
     register(registerData) {
         return this.http.post<any>(`${environment.apiUrl}/auth/register`, registerData)
             .pipe(map(response => {
-                console.log('response', response);
+                return response;
+            }));
+    }
 
+    forgetPassword(email) {
+        return this.http.post<any>(`${environment.apiUrl}/auth/forgot-password`, email)
+            .pipe(map(response => {
+                return response;
+            }));
+    }
+
+    recoverPassword(newPasswordAndToken) {
+        console.log('aaaa', newPasswordAndToken);
+        return this.http.post<any>(`${environment.apiUrl}/auth/recover-password`, newPasswordAndToken)
+            .pipe(map(response => {
                 return response;
             }));
     }

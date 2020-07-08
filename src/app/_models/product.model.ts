@@ -2,10 +2,10 @@ import { ProductImage } from './product-image.model';
 
 export interface Product {
     id: number;
-    title: string;
+    name: string;
     price: number;
+    description: string;
     available: boolean;
-    category: string;
-    imageUrl?: string;
+    categoryID: number;
     images?: ProductImage[];
 }

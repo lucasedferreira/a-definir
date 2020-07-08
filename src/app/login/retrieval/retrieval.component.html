@@ -1,0 +1,46 @@
+<div class="bg-login">
+    <div class="cover"></div>
+</div>
+
+<div class="container-login">
+    <div class="login-reg-panel">
+
+        <div class="register-info-box">
+            <h2>Forgot your password?</h2>
+            <p>Don't freak out, just choose another one!</p>
+        </div>
+
+        <div class="white-panel">
+            <div class="login-forget-password-show">
+                <div class="login text-center">
+                    <form [formGroup]="newPassForm" (ngSubmit)="newPass()">
+                        <h2>Password Retrieval</h2>
+
+                        <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Passwords must be at least 5 characters
+                            </div>
+                        </div>
+
+                        <input type="password" class="form-control" placeholder="Confirm Password"
+                            formControlName="confirmPass"
+                            [ngClass]="{ 'is-invalid': submitted && f.confirmPass.errors }">
+                        <div *ngIf="submitted && f.confirmPass.errors" class="invalid-feedback">
+                            <div *ngIf="f.confirmPass.errors.required">Confirm password is required</div>
+                            <div *ngIf="f.confirmPass.errors.confirmedValidator">Password and Confirm
+                                Password
+                                must be match.</div>
+                        </div>
+
+                        <button [ladda]="loading" class="mt-5 btn custom-btn btn-black btn-outline-black"
+                            style="max-width: 250px;">Change Password</button>
+
+                        <div *ngIf="error" class="alert alert-danger mt-4">{{error}}</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

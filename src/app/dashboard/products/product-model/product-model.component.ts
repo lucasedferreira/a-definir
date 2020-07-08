@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductService, ProductCategoryService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
-import { ProductCategory } from 'src/app/_models';
+import { ProductCategory, Product } from 'src/app/_models';
 
 @Component({
 	selector: 'app-product-model',
@@ -10,7 +10,8 @@ import { ProductCategory } from 'src/app/_models';
 	styleUrls: ['./product-model.component.css']
 })
 export class ProductModelComponent implements OnInit {
-	@Input() product: any;
+	@Input() product: Product;
+	@Input() productList: Product[];
 	productForm: FormGroup;
 	price: number;
 	images = [{name: '', file: ''}];
@@ -25,11 +26,12 @@ export class ProductModelComponent implements OnInit {
 				private categoryService: ProductCategoryService) { }
 
 	ngOnInit(): void {
+		console.log('a', this.productList);
 		this.productForm = this.formBuilder.group({
 			name: ['', Validators.required],
 			price: ['', Validators.required],
 			description: [''],
-			available: [''],
+			available: [1],
 			categoryID: ['', Validators.required],
 			images: ['']
 		});
@@ -60,21 +62,20 @@ export class ProductModelComponent implements OnInit {
 	}
 
 	submit() {
+		console.log('submit');
 		this.registerSubmitted = true;
 
 		if (this.productForm.invalid) return;
 
 		this.loading = true;
-		console.log('this.productForm', this.productForm.value);
-		// this.productService.create(this.productForm.value)
-        //     .pipe(first())
-        //     .subscribe(
-        //         data => {
-		// 			// this.router.navigate(['/email-sent']);
-		// 			console.log('ae poha');
-        //         },
-        //         error => {
-        //             this.loading = false;
-        //         });
+		this.productService.create(this.productForm.value)
+            .pipe(first())
+            .subscribe(
+                data => {
+					this.productList.push(data);
+                },
+                error => {
+                    this.loading = false;
+                });
 	}
 }

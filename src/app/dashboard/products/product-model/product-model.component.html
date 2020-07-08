@@ -53,8 +53,7 @@
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
                                     <input class="custom-control-input" type="checkbox" id="available"
-                                        formControlName="available"
-                                        [checked]="product?.available">
+                                        formControlName="available">
                                     <label for="available" class="custom-control-label">Available</label>
                                 </div>
                             </div>
@@ -65,7 +64,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label>Images</label>
-                                <div class="custom-file" *ngFor="let image of images; index as i">
+                                <div class="custom-file mb-2" *ngFor="let image of images; index as i">
                                     <img [src]="images[i].file" *ngIf="images[i].file" style="max-height: 50px;">
                                     <input type="file" class="file-input" id="customFile-{{i}}" (change)="onFileChange($event, i)">
                                     <label *ngIf="!images[i].name" class="custom-file-label" for="customFile-{{i}}">Choose file</label>

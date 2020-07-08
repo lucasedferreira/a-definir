@@ -1,10 +1,11 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './public/home/home.component';
-import { LoginComponent, EmailSentComponent } from './login';
+import { LoginComponent, RetrievalComponent } from './login';
 import { AuthGuard } from './_guards';
 import { ProductsComponent } from './public/products/products.component';
 import { MyAccountComponent } from './public/my-account/my-account.component';
+import { ProductDetailComponent } from './public/products/product-detail/product-detail.component';
 
 export const appRoutes: Routes = [
     {
@@ -16,8 +17,8 @@ export const appRoutes: Routes = [
         component: LoginComponent
     },
     {
-        path: 'email-sent',
-        component: EmailSentComponent
+        path: 'retrieval/:token',
+        component: RetrievalComponent
     },
     {
         path: 'my-account',
@@ -27,6 +28,10 @@ export const appRoutes: Routes = [
     {
         path: 'products',
         component: ProductsComponent
+    },
+    {
+        path: 'product/:id',
+        component: ProductDetailComponent
     },
 
     // otherwise redirect to home

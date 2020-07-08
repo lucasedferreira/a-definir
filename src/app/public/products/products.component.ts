@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
   filteredProducts: Product[] = [];
-  category: string;
+  categoryID: Number;
   cart: Observable<ShoppingCart>;
 
   constructor(private route: ActivatedRoute,
@@ -30,17 +30,18 @@ export class ProductsComponent implements OnInit {
     this.productService.getAll().pipe(
       switchMap(products => {
         this.products = products;
+        console.log('products', this.products);
         return this.route.queryParamMap;
       }))
     .subscribe(params => {
-      this.category = params.get('category');
+      this.categoryID = parseInt(params.get('category'));
       this.applyFilter();
     });
   }
 
   private applyFilter() {
-    this.filteredProducts = (this.category) ?
-    this.products.filter(p => p.category === this.category) :
+    this.filteredProducts = (this.categoryID) ?
+    this.products.filter(p => p.categoryID === this.categoryID) :
     this.products;
   }
 

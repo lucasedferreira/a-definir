@@ -137,15 +137,15 @@
             </div> -->
             <nav class="nav-menu mobile-menu">
                 <ul>
-                    <li class="active"><a routerLink="/">Home</a></li>
-                    <li><a routerLink="/products">Shop</a></li>
-                    <li><a href="#">test</a>
+                    <li routerLinkActive="active"><a [routerLink]="['']">Home</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/products']">Shop</a></li>
+                    <!-- <li><a href="#">test</a>
                         <ul class="dropdown">
                             <li><a href="#">test</a></li>
                             <li><a href="#">test</a></li>
                             <li><a href="#">test</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
         </div>

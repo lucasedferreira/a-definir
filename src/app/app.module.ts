@@ -26,8 +26,9 @@ import { LaddaModule } from 'angular2-ladda';
 
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { RouterModule } from '@angular/router';;
-import { EmailSentComponent } from './login/email-sent/email-sent.component'
-
+import { RetrievalComponent } from './login/retrieval/retrieval.component'
+;
+import { ProductDetailComponent } from './public/products/product-detail/product-detail.component'
 const config = new AuthServiceConfig([
     {
         id: GoogleLoginProvider.PROVIDER_ID,
@@ -64,7 +65,8 @@ export function provideConfig() {
         HeaderComponent,
         FooterComponent
 ,
-        EmailSentComponent    ],
+        RetrievalComponent ,
+        ProductDetailComponent   ],
     providers: [
         // provider used to create fake backend
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

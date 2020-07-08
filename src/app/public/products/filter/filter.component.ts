@@ -9,7 +9,7 @@ import { ProductCategoryService } from 'src/app/_services';
 export class FilterComponent implements OnInit {
 
   categories$;
-  @Input('category') category;
+  @Input('categoryID') categoryID;
 
   constructor(categoryService: ProductCategoryService) {
     this.categories$ = categoryService.getAll();

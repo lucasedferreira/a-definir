@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://server.definir'
+  apiUrl: 'http://server.definir',
+  imageUrl: 'http://server.definir/images'
 };
 
 /*

@@ -100,15 +100,27 @@ body {
     text-align: left;
 }
 
-.login-show, .register-show {
+.login-forget-password-show, .register-show {
     z-index: 1;
-    transition: 0.3s ease-in-out;
     color: #242424;
     text-align: left;
     padding: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    /* align-items: center; */
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
-.login-show input[type="text"], .login-show input[type="password"] {
+.login-forget-password-show input[type="text"], .login-forget-password-show input[type="password"] {
     width: 100%;
     display: block;
     margin: 30px 0 0;
@@ -121,7 +133,7 @@ body {
     position: fixed;
 }
 
-.login-show .btn-black {
+.login .btn-black {
     max-width: 150px;
     width: 100%;
     padding: 10px;
@@ -129,9 +141,48 @@ body {
     font-size: 15px;
 }
 
-.login-show a {
+.forget-password .btn-black {
+    max-width: 250px;
+    width: 100%;
+    padding: 10px;
+    float: right;
+    font-size: 15px;
+    letter-spacing: .1rem;
+}
+
+.login-forget-password-show a {
     display: inline-block;
     padding: 10px 0;
+    cursor: pointer;
+}
+
+.login, .forget-password {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 50px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.forget-password {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.login-forget-password-show.flipped .login {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.login-forget-password-show.flipped .forget-password {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
 }
 
 .register-show input[type="text"], .register-show input[type="password"] {
